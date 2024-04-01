@@ -37,6 +37,7 @@ header {
 
 .logo {
   width: 153px;
+  aspect-ratio: 3/1;
 }
 
 
@@ -104,6 +105,7 @@ main {
 
 .main-content img {
   width: 588px;
+  aspect-ratio: 4/3;
 }
 
 .content-keyword {
@@ -153,7 +155,8 @@ footer {
 }
 
 .sns-link img {
-  width: 18px;
+  width: 20px;
+  aspect-ratio: 1/1;
 }
 
 
