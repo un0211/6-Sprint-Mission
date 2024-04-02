@@ -160,14 +160,14 @@ footer {
   aspect-ratio: 1/1;
 }
 
-@media (min-width: 768px) {
-  #banner-top br {
-    display: inline-block;
-    content: " ";
-  }
-}
-
 @media (max-width: 1199px) {
+  @media (min-width: 768px) {
+    #banner-top br {
+      display: inline-block;
+      content: " ";
+    }
+  }
+
   header {
     padding: 10px 24px 9px;
   }
