@@ -5,7 +5,8 @@ body {
 }
 
 .content {
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
 
   display: flex;
@@ -159,14 +160,7 @@ footer {
   aspect-ratio: 1/1;
 }
 
-
-@media (max-width: 1219px) {
-  .content {
-    width: 100%;
-  }
-}
-
-@media (max-width: 1199px) and (min-width: 768px) {
+@media (min-width: 768px) {
   #banner-top br {
     display: inline-block;
     content: " ";
