@@ -18,10 +18,12 @@
     <form id="login-form">
       <label class="label" for="email">이메일</label>
       <input class="input" type="email" id="email" placeholder="이메일을 입력해주세요" autocomplete="email" autofocus>
+      <p class="input-description warning hidden"></p>
 
       <label class="label" for="password">비밀번호</label>
       <div class="password-wrapper">
         <input class="input" type="password" id="password" placeholder="비밀번호를 입력해주세요" autocomplete="current-password">
+        <p class="input-description warning hidden"></p>
         <img class="see-or-not-icon" alt="비밀번호 보기" src="/images/icon/see-or-not.svg">
       </div>
 
@@ -45,5 +47,7 @@
       <a href="/signup">회원가입</a>
     </div>
   </main>
+
+  <script type="text/javascript" src="/scripts/auth.js"></script>
 </body>
 </html>
