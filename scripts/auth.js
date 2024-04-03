@@ -64,7 +64,7 @@ const checkPasswordValid = () => {
     else
         formButton.disabled && hideWarning(password);
 
-    passwordCheck.value && checkPasswordCheckValid();
+    passwordCheck && passwordCheck.value && checkPasswordCheckValid();
 }
 
 const checkPasswordCheckValid = () => {
