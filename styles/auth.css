@@ -85,6 +85,7 @@ main {
   position: absolute;
   top: 16px;
   right: 24px;
+  cursor: pointer;
 }
 
 #login-form button,

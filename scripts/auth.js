@@ -5,6 +5,8 @@ const nickName = document.querySelector('#nickname');
 const password = document.querySelector('#password');
 const passwordCheck = document.querySelector('#password-check');
 
+const seeOrNotIcons = document.querySelectorAll('.see-or-not-icon');
+
 const formButton = document.querySelector('form .button');
 const loginButton = document.querySelector('#login-form .button');
 const signupButton = document.querySelector('#singup-form .button');
@@ -75,17 +77,36 @@ const checkPasswordCheckValid = () => {
 }
 
 
+const toggleInvisible = (event) => {
+    const icon = event.target;
+    const input = icon.parentElement.firstElementChild;
+
+    if (icon.classList.contains('invisible')) {
+        icon.src = '/images/icon/eye-visible.svg';
+        input.type = 'text';
+    } else {
+        icon.src = '/images/icon/eye-invisible.svg';
+        input.type = 'password';
+    }
+
+    icon.classList.toggle('invisible');
+}
+
+
 const submitAndMove = (event, path) => {
     // Do something for submit the data
 
     window.location.href = path;
 }
 
+
 formButton.disabled = true;
 email.addEventListener('focusout', checkEmailValid);
 nickName && nickName.addEventListener('focusout', checkNickNameValid);
 password.addEventListener('focusout', checkPasswordValid);
 passwordCheck && passwordCheck.addEventListener('focusout', checkPasswordCheckValid);
+
+seeOrNotIcons.forEach((icon) => icon.addEventListener('click', toggleInvisible));
 
 loginButton && loginButton.addEventListener('click', (event) => submitAndMove(event, '/items'));
 signupButton && signupButton.addEventListener('click', (event) => submitAndMove(event, '/login'));
