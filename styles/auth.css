@@ -20,6 +20,9 @@ main {
   color: var(--cool-gray800);
 }
 
+
+/* CSS for form */
+
 .label {
   font-size: 18px;
   font-weight: 700;
@@ -69,6 +72,9 @@ main {
   color: var(--white);
 }
 
+
+/* CSS for quick login */
+
 .quick-login {
   width: 100%;
   height: 74px;
@@ -86,6 +92,13 @@ main {
   align-items: center;
 }
 
+.quick-login-sns-icon {
+  width: 42px;
+  aspect-ratio: 1/1;
+  margin-left: 16px;
+}
+
+
 .signup,
 .login {
   display: flex;
@@ -101,12 +114,6 @@ main {
 .login a {
   color: #3182F6;
   text-decoration: underline;
-}
-
-.quick-login-sns-icon {
-  width: 42px;
-  aspect-ratio: 1/1;
-  margin-left: 16px;
 }
 
 
