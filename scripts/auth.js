@@ -15,10 +15,9 @@ const isValidEmail = (email) => emailPattern.test(email);
 const isValidPassword = (password) => password.length >= 8;
 const isValidPasswordCheck = (password, passwordCheck) => password === passwordCheck;
 const isAllVaild = () => {
-    const warnings = document.querySelectorAll('.input.warning');
     const inputs = Array.from(document.querySelectorAll('.input'));
 
-    return (warnings.length === 0 && inputs.filter((input) => !input.value).length === 0);
+    return inputs.filter((input) => !input.value || input.classList.contains('warning')).length === 0;
 }
 
 
