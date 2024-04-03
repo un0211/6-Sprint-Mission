@@ -41,9 +41,7 @@ const hideWarning = (input) => {
 }
 
 
-const checkEmailValid = (event) => {
-    const email = event.target;
-
+const checkEmailValid = () => {
     if (isEmpty(email.value))
         showWarning(email, '이메일을 입력해주세요.');
     else if (!isValidEmail(email.value))
@@ -52,33 +50,29 @@ const checkEmailValid = (event) => {
         formButton.disabled && hideWarning(email);
 }
 
-const checkNickNameValid = (event) => {
-    const nickName = event.target;
-
+const checkNickNameValid = () => {
     if (isEmpty(nickName.value))
         showWarning(nickName, '닉네임을 입력해주세요.');
     else
         formButton.disabled && hideWarning(nickName);
 }
 
-const checkPasswordValid = (event) => {
-    const password = event.target;
-
+const checkPasswordValid = () => {
     if (isEmpty(password.value))
         showWarning(password, '비밀번호를 입력해주세요.');
     else if (!isValidPassword(password.value))
         showWarning(password, '비밀번호를 8자 이상 입력해주세요.');
     else
         formButton.disabled && hideWarning(password);
+
+    passwordCheck.value && checkPasswordCheckValid();
 }
 
-const checkPasswordCheckValid = (event) => {
-    const passworCheck = event.target;
-
+const checkPasswordCheckValid = () => {
     if (!isValidPasswordCheck(password.value, passwordCheck.value))
-        showWarning(passworCheck, '비밀번호가 일치하지 않습니다.');
+        showWarning(passwordCheck, '비밀번호가 일치하지 않습니다.');
     else
-        formButton.disabled && hideWarning(passworCheck);
+        formButton.disabled && hideWarning(passwordCheck);
 }
 
 
