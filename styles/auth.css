@@ -28,6 +28,10 @@ main {
   font-weight: 700;
 }
 
+.input-wrapper {
+  margin: 16px 0 24px;
+}
+
 .input {
   width: 100%;
   height: 56px;
@@ -35,7 +39,6 @@ main {
   border: none;
   background-color: var(--cool-gray100);
   padding: 16px 24px;
-  margin: 16px 0 24px;
 
   color: #9CA3AF;
   font-size: 16px;
@@ -51,6 +54,26 @@ main {
   border: 2px solid var(--point-blue);
 }
 
+.input.warning {
+  border: 2px solid var(--point-red);
+}
+
+.input-description {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 17.9px;
+  margin-left: 16px;
+  margin-top: 8px;
+}
+
+.input-description.warning {
+  color: var(--point-red);
+}
+
+.hidden {
+  display: none;
+}
+
 .password-wrapper {
   position: relative;
 }
@@ -60,7 +83,7 @@ main {
   aspect-ratio: 1/1;
 
   position: absolute;
-  top: 32px;
+  top: 16px;
   right: 24px;
 }
 
@@ -135,6 +158,10 @@ main {
 
   .label {
     font-size: 14px;
+  }
+
+  .input-wrapper {
+    margin: 8px 0 16px;
   }
 
   #login-form button,
