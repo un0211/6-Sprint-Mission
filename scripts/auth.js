@@ -9,7 +9,7 @@ const seeOrNotIcons = document.querySelectorAll('.see-or-not-icon');
 
 const formButton = document.querySelector('form .button');
 const loginButton = document.querySelector('#login-form .button');
-const signupButton = document.querySelector('#singup-form .button');
+const signupButton = document.querySelector('#signup-form .button');
 
 
 const isEmpty = (input) => !input;
