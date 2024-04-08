@@ -16,7 +16,7 @@ const isEmpty = (input) => !input;
 const isValidEmail = (email) => emailPattern.test(email);
 const isValidPassword = (password) => password.length >= 8;
 const isValidPasswordCheck = (password, passwordCheck) => password === passwordCheck;
-const isAllVaild = () => {
+const isValidAll = () => {
     const inputs = Array.from(document.querySelectorAll('.input'));
 
     return inputs.filter((input) => !input.value || input.classList.contains('warning')).length === 0;
@@ -38,7 +38,7 @@ const hideWarning = (input) => {
     input.classList.remove('warning');
     warning.classList.add('hidden');
 
-    if (isAllVaild()) formButton.disabled = false;
+    if (isValidAll()) formButton.disabled = false;
 }
 
 
@@ -93,7 +93,7 @@ const toggleInvisible = (event) => {
 }
 
 
-const submitAndMove = (event, path) => {
+const handleSubmit = (event, path) => {
     // Do something for submit the data
 
     window.location.href = path;
@@ -108,5 +108,5 @@ passwordCheck && passwordCheck.addEventListener('focusout', checkPasswordCheckVa
 
 seeOrNotIcons.forEach((icon) => icon.addEventListener('click', toggleInvisible));
 
-loginButton && loginButton.addEventListener('click', (event) => submitAndMove(event, '/items'));
-signupButton && signupButton.addEventListener('click', (event) => submitAndMove(event, '/login'));
+loginButton && loginButton.addEventListener('click', (event) => handleSubmit(event, '/items'));
+signupButton && signupButton.addEventListener('click', (event) => handleSubmit(event, '/login'));
