@@ -68,7 +68,7 @@ header {
 }
 
 .banner-text {
-  width: 357px;
+  width: 355px;
   position: absolute;
   left: 0px;
 }
@@ -161,13 +161,6 @@ footer {
 }
 
 @media (max-width: 1199px) {
-  @media (min-width: 768px) {
-    #banner-top br {
-      display: inline-block;
-      content: " ";
-    }
-  }
-
   header {
     padding: 10px 24px 9px;
   }
@@ -283,6 +276,7 @@ footer {
   }
 
   .banner-content .content-title {
+    width: 240px;
     font-size: 32px;
     line-height: 44.8px;
   }
