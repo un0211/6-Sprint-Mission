@@ -106,7 +106,6 @@ const handleSubmit = (event, path) => {
 }
 
 
-formButton.disabled = true;
 email.addEventListener('focusout', checkEmailValid);
 nickName && nickName.addEventListener('focusout', checkNickNameValid);
 password.addEventListener('focusout', checkPasswordValid);
