@@ -17,86 +17,92 @@ const isValidEmail = (email) => emailPattern.test(email);
 const isValidPassword = (password) => password.length >= 8;
 const isValidPasswordCheck = (password, passwordCheck) => password === passwordCheck;
 const isValidAll = () => {
-    const inputs = Array.from(document.querySelectorAll('.input'));
+  const inputs = Array.from(document.querySelectorAll('.input'));
 
-    return inputs.filter((input) => !input.value || input.classList.contains('warning')).length === 0;
+  return inputs.filter((input) => !input.value || input.classList.contains('warning')).length === 0;
 }
 
 
 const showWarning = (input, message) => {
-    const warning = input.nextElementSibling;
+  const warning = input.nextElementSibling;
 
-    input.classList.add('warning');
-    warning.textContent = message;
-    warning.classList.remove('hidden');
-    formButton.disabled = true;
+  input.classList.add('warning');
+  warning.textContent = message;
+  warning.classList.remove('hidden');
+  formButton.disabled = true;
 }
 
 const hideWarning = (input) => {
-    const warning = input.nextElementSibling;
+  const warning = input.nextElementSibling;
 
-    input.classList.remove('warning');
-    warning.classList.add('hidden');
+  input.classList.remove('warning');
+  warning.classList.add('hidden');
 
-    if (isValidAll()) formButton.disabled = false;
+  if (isValidAll()) {
+      formButton.disabled = false;
+  }
 }
 
 
 const checkEmailValid = () => {
-    if (isEmpty(email.value))
-        showWarning(email, '이메일을 입력해주세요.');
-    else if (!isValidEmail(email.value))
-        showWarning(email, '잘못된 이메일 형식입니다.');
-    else
-        formButton.disabled && hideWarning(email);
+  if (isEmpty(email.value)) {
+    showWarning(email, '이메일을 입력해주세요.');
+  } else if (!isValidEmail(email.value)) {
+    showWarning(email, '잘못된 이메일 형식입니다.');
+  } else {
+    formButton.disabled && hideWarning(email);
+  }
 }
 
 const checkNickNameValid = () => {
-    if (isEmpty(nickName.value))
-        showWarning(nickName, '닉네임을 입력해주세요.');
-    else
-        formButton.disabled && hideWarning(nickName);
+  if (isEmpty(nickName.value)) {
+    showWarning(nickName, '닉네임을 입력해주세요.');
+  } else {
+    formButton.disabled && hideWarning(nickName);
+  }
 }
 
 const checkPasswordValid = () => {
-    if (isEmpty(password.value))
-        showWarning(password, '비밀번호를 입력해주세요.');
-    else if (!isValidPassword(password.value))
-        showWarning(password, '비밀번호를 8자 이상 입력해주세요.');
-    else
-        formButton.disabled && hideWarning(password);
+  if (isEmpty(password.value)) {
+    showWarning(password, '비밀번호를 입력해주세요.');
+  } else if (!isValidPassword(password.value)) {
+    showWarning(password, '비밀번호를 8자 이상 입력해주세요.');
+  } else {
+    formButton.disabled && hideWarning(password);
+  }
 
-    passwordCheck && passwordCheck.value && checkPasswordCheckValid();
+  passwordCheck && passwordCheck.value && checkPasswordCheckValid();
 }
 
 const checkPasswordCheckValid = () => {
-    if (!isValidPasswordCheck(password.value, passwordCheck.value))
-        showWarning(passwordCheck, '비밀번호가 일치하지 않습니다.');
-    else
-        formButton.disabled && hideWarning(passwordCheck);
+  if (!isValidPasswordCheck(password.value, passwordCheck.value)) {
+    showWarning(passwordCheck, '비밀번호가 일치하지 않습니다.');
+  } else {
+    formButton.disabled && hideWarning(passwordCheck);
+  }
 }
 
 
 const toggleInvisible = (event) => {
-    const icon = event.target;
-    const input = icon.parentElement.firstElementChild;
+  const icon = event.target;
+  const input = icon.parentElement.firstElementChild;
 
-    if (icon.classList.contains('invisible')) {
-        icon.src = '/images/icon/eye-visible.svg';
-        input.type = 'text';
-    } else {
-        icon.src = '/images/icon/eye-invisible.svg';
-        input.type = 'password';
-    }
+  if (icon.classList.contains('invisible')) {
+    icon.src = '/images/icon/eye-visible.svg';
+    input.type = 'text';
+  } else {
+    icon.src = '/images/icon/eye-invisible.svg';
+    input.type = 'password';
+  }
 
-    icon.classList.toggle('invisible');
+  icon.classList.toggle('invisible');
 }
 
 
 const handleSubmit = (event, path) => {
-    // Do something for submit the data
+  // Do something for submit the data
 
-    window.location.href = path;
+  window.location.href = path;
 }
 
 
