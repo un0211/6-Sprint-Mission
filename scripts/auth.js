@@ -39,7 +39,7 @@ const hideWarning = (input) => {
   warning.classList.add('hidden');
 
   if (isValidAll()) {
-      formButton.disabled = false;
+    formButton.disabled = false;
   }
 }
 
@@ -49,16 +49,16 @@ const checkEmailValid = () => {
     showWarning(email, '이메일을 입력해주세요.');
   } else if (!isValidEmail(email.value)) {
     showWarning(email, '잘못된 이메일 형식입니다.');
-  } else {
-    formButton.disabled && hideWarning(email);
+  } else if (formButton.disabled) {
+    hideWarning(email);
   }
 }
 
 const checkNickNameValid = () => {
   if (isEmpty(nickName.value)) {
     showWarning(nickName, '닉네임을 입력해주세요.');
-  } else {
-    formButton.disabled && hideWarning(nickName);
+  } else if (formButton.disabled) {
+    hideWarning(nickName);
   }
 }
 
@@ -67,8 +67,8 @@ const checkPasswordValid = () => {
     showWarning(password, '비밀번호를 입력해주세요.');
   } else if (!isValidPassword(password.value)) {
     showWarning(password, '비밀번호를 8자 이상 입력해주세요.');
-  } else {
-    formButton.disabled && hideWarning(password);
+  } else if (formButton.disabled) {
+    hideWarning(password);
   }
 
   passwordCheck && passwordCheck.value && checkPasswordCheckValid();
@@ -77,8 +77,8 @@ const checkPasswordValid = () => {
 const checkPasswordCheckValid = () => {
   if (!isValidPasswordCheck(password.value, passwordCheck.value)) {
     showWarning(passwordCheck, '비밀번호가 일치하지 않습니다.');
-  } else {
-    formButton.disabled && hideWarning(passwordCheck);
+  } else if (formButton.disabled) {
+    hideWarning(passwordCheck);
   }
 }
 
