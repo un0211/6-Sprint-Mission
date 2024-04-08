@@ -1,4 +1,5 @@
-const emailPattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
+const EMAIL_PATTERN = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
+const MIN_PASSWORD_LENGTH = 8;
 
 const email = document.querySelector('#email');
 const nickName = document.querySelector('#nickname');
@@ -13,8 +14,8 @@ const signupButton = document.querySelector('#signup-form .button');
 
 
 const isEmpty = (input) => !input;
-const isValidEmail = (email) => emailPattern.test(email);
-const isValidPassword = (password) => password.length >= 8;
+const isValidEmail = (email) => EMAIL_PATTERN.test(email);
+const isValidPassword = (password) => password.length >= MIN_PASSWORD_LENGTH;
 const isValidPasswordCheck = (password, passwordCheck) => password === passwordCheck;
 const isValidAll = () => {
   const inputs = Array.from(document.querySelectorAll('.input'));
