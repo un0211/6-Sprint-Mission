@@ -100,19 +100,9 @@ const toggleInvisible = (event) => {
 }
 
 
-const handleSubmit = (event, path) => {
-  // Do something for submit the data
-
-  window.location.href = path;
-}
-
-
 email.addEventListener('focusout', checkEmailValid);
 nickName && nickName.addEventListener('focusout', checkNickNameValid);
 password.addEventListener('focusout', checkPasswordValid);
 passwordCheck && passwordCheck.addEventListener('focusout', checkPasswordCheckValid);
 
 seeOrNotIcons.forEach((icon) => icon.addEventListener('click', toggleInvisible));
-
-loginButton && loginButton.addEventListener('click', (event) => handleSubmit(event, '/items'));
-signupButton && signupButton.addEventListener('click', (event) => handleSubmit(event, '/login'));

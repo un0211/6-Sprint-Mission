@@ -15,7 +15,7 @@
     </a>
   </header>
   <main>
-    <form id="signup-form">
+    <form id="signup-form" action="/login">
       <label class="label" for="email">이메일</label>
       <div class="input-wrapper">
         <input class="input" type="email" id="email" placeholder="이메일을 입력해주세요" autocomplete="off" autofocus>
@@ -42,7 +42,7 @@
         <img class="see-or-not-icon invisible" alt="비밀번호 확인 보기" src="/images/icon/eye-invisible.svg">
       </div>
 
-      <button class="button button-large" type="button" disabled>회원가입</button>
+      <button class="button button-large" type="submit" disabled>회원가입</button>
     </form>
 
     <div class="quick-login">
