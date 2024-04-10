@@ -18,9 +18,11 @@ const isValidEmail = (email) => EMAIL_PATTERN.test(email);
 const isValidPassword = (password) => password.length >= MIN_PASSWORD_LENGTH;
 const isValidPasswordCheck = (password, passwordCheck) => password === passwordCheck;
 const isValidAll = () => {
-  const inputs = Array.from(document.querySelectorAll('.input'));
+  if (isEmpty(email) || isEmpty(nickName) || isEmpty(password) || isEmpty(passwordCheck))  {
+    return false
+  }
 
-  return inputs.filter((input) => !input.value || input.classList.contains('warning')).length === 0;
+  return isValidEmail(email) && isValidPassword(password) && isValidPasswordCheck(passwordCheck);
 }
 
 
