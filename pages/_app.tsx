@@ -1,6 +1,8 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import "@/styles/globals.css";
+import Nav from "@/components/common/Nav";
+import { DeviceProvider } from "@/lib/DeviceContext";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -30,7 +32,10 @@ export default function App({ Component, pageProps }: AppProps) {
           content="일상의 모든 물건을 거래해보세요"
         />
       </Head>
-      <Component {...pageProps} />
+      <DeviceProvider>
+        <Nav />
+        <Component {...pageProps} />
+      </DeviceProvider>
     </>
   );
 }
