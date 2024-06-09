@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import "@/styles/globals.css";
+import Nav from "@/components/common/Nav";
 import { DeviceProvider } from "@/lib/DeviceContext";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -32,6 +33,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <DeviceProvider>
+        <Nav />
         <Component {...pageProps} />
       </DeviceProvider>
     </>
