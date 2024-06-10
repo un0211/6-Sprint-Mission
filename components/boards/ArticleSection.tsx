@@ -31,7 +31,7 @@ function ArticleSection() {
       </header>
 
       <div className={styles.toolbar}>
-        <SearchBar keyword={keyword} onKeywordChange={handleKeywordChange} />
+        <SearchBar onKeywordChange={handleKeywordChange} />
         <Dropdown order={order} onOrderChange={handleOrderChange} />
       </div>
 
