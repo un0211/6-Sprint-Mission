@@ -8,33 +8,41 @@ import { BestArticle } from "./Article";
 import Link from "next/link";
 
 function BestArticleSection() {
+  return (
+    <section className={styles.section}>
+      <h2 className={styles.title}>베스트 게시글</h2>
+      <BestArticleList />
+    </section>
+  );
+}
+
+function BestArticleList() {
   const device = useDevice();
   const query = `?pageSize=${NUM_BEST_ARTICLES[device]}`;
   const fetchedData = useFetchData<Articles>(`/articles${query}`);
   const { data: articles, isLoading, loadingError } = fetchedData;
 
+  if (isLoading) {
+    return (
+      <div className={styles.spinner_container}>
+        <Spinner />
+      </div>
+    );
+  }
+
   return (
-    <section className={styles.section}>
-      {isLoading ? (
-        <div className={styles.spinner_container}>
-          <Spinner />
-        </div>
-      ) : (
-        <>
-          <h2 className={styles.title}>베스트 게시글</h2>
-          <ol className={styles.list}>
-            {articles?.list.map((article) => (
-              <li key={article.id}>
-                <Link href={`/boards/${article.id}`}>
-                  <BestArticle article={article} />
-                </Link>
-              </li>
-            ))}
-          </ol>
-        </>
-      )}
+    <>
+      <ol className={styles.list}>
+        {articles?.list.map((article) => (
+          <li key={article.id}>
+            <Link href={`/boards/${article.id}`}>
+              <BestArticle article={article} />
+            </Link>
+          </li>
+        ))}
+      </ol>
       {loadingError && <p>{loadingError.message}</p>}
-    </section>
+    </>
   );
 }
 
