@@ -10,11 +10,20 @@ function Dropdown({
   order: Order;
   onOrderChange: (o: Order) => void;
 }) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleDropdownClick = () => {
+    setIsOpen((isOpen) => !isOpen);
+  };
+
+  const handleMenuClick = (newOrder: Order) => {
+    onOrderChange(newOrder);
+    setIsOpen(false);
+  };
 
   return (
     <div className={styles.dropdown}>
-      <button className={styles.button}>
+      <button className={styles.button} onClick={handleDropdownClick}>
         <span>{ORDER_MESSAGE[order]}</span>
         <Image
           src="/boards/arrow_down.svg"
@@ -23,15 +32,18 @@ function Dropdown({
           height={24}
         />
       </button>
-      {isDropdownOpen && (
+      {isOpen && (
         <ul className={styles.menus}>
           <li
             className={styles.menu}
-            onClick={() => onOrderChange(Order.Recent)}
+            onClick={() => handleMenuClick(Order.Recent)}
           >
             최신순
           </li>
-          <li className={styles.menu} onClick={() => onOrderChange(Order.Like)}>
+          <li
+            className={styles.menu}
+            onClick={() => handleMenuClick(Order.Like)}
+          >
             좋아요순
           </li>
         </ul>
