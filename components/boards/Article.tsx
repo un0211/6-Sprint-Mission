@@ -1,9 +1,9 @@
-import { Article as BestArticle } from "@/interfaces/Article.interface";
+import { Article } from "@/interfaces/Article.interface";
 import styles from "./Article.module.scss";
 import Image from "next/image";
 import formatDateWithDot from "@/utils/formatDateWithDot";
 
-export function BestArticle({ article }: { article: BestArticle }) {
+export function BestArticle({ article }: { article: Article }) {
   const imageSrc = article.image?.startsWith(
     "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com"
   )
@@ -14,7 +14,7 @@ export function BestArticle({ article }: { article: BestArticle }) {
     <article className={`${styles.article} ${styles.best}`}>
       <Image
         className={styles.badge}
-        src="/images/boards/badge.png"
+        src="/boards/badge.png"
         alt="베스트 상품 뱃지"
         width="102"
         height="30"
@@ -57,7 +57,7 @@ function ArticleImage({ imageSrc }: { imageSrc: string }) {
 function LikeCount({ count }: { count: number }) {
   return (
     <div className={styles.count_container}>
-      <Image src="/icons/heart.svg" alt="좋아요" width="16" height="16" />
+      <Image src="/boards/heart.svg" alt="좋아요" width="16" height="16" />
       <p>{count}</p>
     </div>
   );

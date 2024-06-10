@@ -15,14 +15,14 @@ function Nav() {
           {device === Device.Mobile ? (
             <Image
               alt="판다마켓 로고"
-              src="/images/logo_text.png"
+              src="/logo_text.png"
               width="81"
               height="40"
             />
           ) : (
             <Image
               alt="판다마켓 로고"
-              src={"/images/logo.png"}
+              src={"/logo.png"}
               width="153"
               height="51"
             />
