@@ -1,16 +1,16 @@
 import { NUM_BEST_ARTICLES } from "@/constants/boards";
 import useFetchData from "@/hooks/useFetchData";
-import { ArticleList } from "@/interfaces/Article.interface";
+import { Articles } from "@/interfaces/Article.interface";
 import { useDevice } from "@/lib/DeviceContext";
 import Spinner from "../common/Spinner";
-import styles from "./BestArticleList.module.scss";
+import styles from "./BestArticleSection.module.scss";
 import { BestArticle } from "./Article";
 import Link from "next/link";
 
-function BestArticleList() {
+function BestArticleSection() {
   const device = useDevice();
   const query = `?pageSize=${NUM_BEST_ARTICLES[device]}`;
-  const fetchedData = useFetchData<ArticleList>(`/articles${query}`);
+  const fetchedData = useFetchData<Articles>(`/articles${query}`);
   const { data: articles, isLoading, loadingError } = fetchedData;
 
   return (
@@ -38,4 +38,4 @@ function BestArticleList() {
   );
 }
 
-export default BestArticleList;
+export default BestArticleSection;

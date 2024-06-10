@@ -1,19 +1,21 @@
 .article {
-  padding: 0 24px;
-
   &.best {
     background-color: var(--cool-gray50);
+    padding: 0 24px;
+
+    .content {
+      padding: 16px 0;
+
+      @media (min-width: 1200px) {
+        gap: 18px;
+      }
+    }
   }
 
-  .best_content {
-    padding: 16px 0;
+  .content {
     display: flex;
     flex-direction: column;
-    gap: 18px;
-
-    @media (max-width: 1199px) {
-      gap: 16px;
-    }
+    gap: 16px;
   }
 
   .header {
@@ -48,6 +50,12 @@
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    p {
+      display: flex;
+      align-items: center;
+    }
 
     .info_container {
       display: flex;
@@ -60,7 +68,16 @@
 
     .count_container {
       display: flex;
-      gap: 4px;
+      gap: 8px;
+      font-size: 16px;
+      color: var(--cool-gray500);
     }
+  }
+}
+
+.best {
+  .count_container {
+    gap: 4px;
+    font-size: 14px;
   }
 }
