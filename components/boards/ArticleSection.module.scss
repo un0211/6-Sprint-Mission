@@ -1,18 +1,7 @@
 .section {
   margin: 0 auto;
-  width: 1200px;
-
-  @media (max-width: 1199px) {
-    width: 696px;
-  }
-
-  @media (max-width: 767px) {
-    width: 343px;
-  }
-
-  @media (max-width: 375px) {
-    width: 100%;
-  }
+  max-width: 1200px;
+  width: 100%;
 
   .header {
     display: flex;
