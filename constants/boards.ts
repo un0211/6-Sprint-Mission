@@ -1,4 +1,4 @@
-import Device from "./device";
+import Device from "./Device";
 
 export const NUM_BEST_ARTICLES = {
   [Device.Mobile]: 1,

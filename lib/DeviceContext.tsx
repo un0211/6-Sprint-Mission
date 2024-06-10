@@ -1,12 +1,11 @@
 import {
   ReactNode,
   createContext,
-  useCallback,
   useContext,
   useEffect,
   useState,
 } from "react";
-import Device from "@/constants/device";
+import Device from "@/constants/Device";
 
 const DeviceContext = createContext<Device | undefined>(undefined);
 const MAX_MOBILE_WIDTH = 767;

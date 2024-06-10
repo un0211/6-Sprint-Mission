@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "./Nav.module.scss";
 import { useDevice } from "@/lib/DeviceContext";
-import Device from "@/constants/device";
+import Device from "@/constants/Device";
 
 function Nav() {
   const device = useDevice();
