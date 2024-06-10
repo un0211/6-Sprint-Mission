@@ -5,6 +5,7 @@ import { useDevice } from "@/lib/DeviceContext";
 import Spinner from "../common/Spinner";
 import styles from "./BestArticleList.module.scss";
 import { BestArticle } from "./Article";
+import Link from "next/link";
 
 function BestArticleList() {
   const device = useDevice();
@@ -24,7 +25,9 @@ function BestArticleList() {
           <ol className={styles.list}>
             {articles?.list.map((article) => (
               <li key={article.id}>
-                <BestArticle article={article} />
+                <Link href={`/boards/${article.id}`}>
+                  <BestArticle article={article} />
+                </Link>
               </li>
             ))}
           </ol>
