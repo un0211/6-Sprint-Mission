@@ -1,11 +1,12 @@
 import { NUM_BEST_ARTICLES } from "@/constants/boards";
 import useFetchData from "@/hooks/useFetchData";
-import { Article, ArticleList } from "@/interfaces/Article.interface";
+import { ArticleList } from "@/interfaces/Article.interface";
 import { useDevice } from "@/lib/DeviceContext";
 import Spinner from "../common/Spinner";
-import styles from "./BestArticles.module.scss";
+import styles from "./BestArticleList.module.scss";
+import { BestArticle } from "./Article";
 
-function BestArticles() {
+function BestArticleList() {
   const device = useDevice();
   const query = `?pageSize=${NUM_BEST_ARTICLES[device]}`;
   const fetchedData = useFetchData<ArticleList>(`/articles${query}`);
@@ -14,13 +15,17 @@ function BestArticles() {
   return (
     <section className={styles.section}>
       {isLoading ? (
-        <Spinner />
+        <div className={styles.spinner_container}>
+          <Spinner />
+        </div>
       ) : (
         <>
-          <h2>베스트 게시글</h2>
-          <ol>
+          <h2 className={styles.title}>베스트 게시글</h2>
+          <ol className={styles.list}>
             {articles?.list.map((article) => (
-              <li key={article.id}>{article.title}</li>
+              <li key={article.id}>
+                <BestArticle article={article} />
+              </li>
             ))}
           </ol>
         </>
@@ -30,4 +35,4 @@ function BestArticles() {
   );
 }
 
-export default BestArticles;
+export default BestArticleList;

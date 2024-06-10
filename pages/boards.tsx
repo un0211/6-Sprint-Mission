@@ -1,11 +1,12 @@
-import Articles from "@/components/boards/Articles";
-import BestArticles from "@/components/boards/BestArticles";
+import ArticleList from "@/components/boards/ArticleList";
+import BestArticleList from "@/components/boards/BestArticleList";
+import styles from "@/styles/Boards.module.scss";
 
 function Boards() {
   return (
-    <main>
-      <BestArticles />
-      <Articles />
+    <main className={styles.main}>
+      <BestArticleList />
+      <ArticleList />
     </main>
   );
 }
