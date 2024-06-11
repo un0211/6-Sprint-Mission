@@ -1,3 +1,5 @@
+@import "@/styles/_color";
+
 .section {
   margin: 0 auto;
   max-width: 1200px;
@@ -16,7 +18,7 @@
     .title {
       font-size: 20px;
       line-height: 1.2;
-      color: var(--cool-gray900);
+      color: $cool-gray900;
 
       @media (max-width: 767px) {
         font-size: 18px;
@@ -56,7 +58,7 @@
 
     .divider {
       margin-top: 24px;
-      border: 1px solid var(--cool-gray200);
+      border: 1px solid $cool-gray200;
     }
   }
 }

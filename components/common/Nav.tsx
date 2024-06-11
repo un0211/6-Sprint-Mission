@@ -47,13 +47,10 @@ function Nav() {
 function Menu({ path, menu }: { path: string; menu: string }) {
   const router = useRouter();
 
-  const linkStyle = {
-    color:
-      path === router.pathname ? "var(--point-blue)" : "var(--cool-gray600)",
-  };
+  const className = path === router.pathname ? styles.active : "";
 
   return (
-    <Link href={path} style={linkStyle}>
+    <Link href={path} className={className}>
       {menu}
     </Link>
   );

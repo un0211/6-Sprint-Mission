@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import "@/styles/globals.css";
+import "@/styles/globals.scss";
 import Nav from "@/components/common/Nav";
 import { DeviceProvider } from "@/lib/DeviceContext";
 

@@ -1,3 +1,5 @@
+@import "@/styles/_color";
+
 .nav {
   position: sticky;
   top: 0;
@@ -6,8 +8,8 @@
   width: 100%;
   min-width: 360px;
   height: 70px;
-  background-color: var(--white);
-  border-bottom: 1px solid var(--gray300);
+  background-color: $white;
+  border-bottom: 1px solid $gray300;
 
   display: flex;
   justify-content: space-between;
@@ -23,10 +25,15 @@
     grid-template-columns: 109px 109px;
     align-items: center;
 
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--cool-gray600);
+    a {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: $cool-gray600;
+      &.active {
+        color: $point-blue;
+      }
+    }
 
     li {
       text-align: center;

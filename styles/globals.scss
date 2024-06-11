@@ -1,0 +1,55 @@
+@import "reset";
+@import "_color";
+
+body {
+  margin: 0;
+  background-color: #ffffff;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+    Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  word-break: keep-all;
+  font-family: Pretendard, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.button {
+  background-color: $point-blue;
+  color: $white;
+
+  &:hover {
+    background-color: $button-hover;
+  }
+  &:active {
+    background-color: $button-click;
+  }
+  &:disabled {
+    background-color: $cool-gray400;
+  }
+}
+
+a.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.button {
+  border: none;
+}
+
+li {
+  list-style: none;
+}

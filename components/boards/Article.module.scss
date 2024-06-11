@@ -1,6 +1,8 @@
+@import "@/styles/_color";
+
 .article {
   &.best {
-    background-color: var(--cool-gray50);
+    background-color: $cool-gray50;
     padding: 0 24px;
 
     .content {
@@ -36,8 +38,8 @@
       width: 72px;
       height: 72px;
       border-radius: 6px;
-      background-color: var(--white);
-      border: 1px solid var(--cool-gray200);
+      background-color: $white;
+      border: 1px solid $cool-gray200;
 
       padding: 12px;
     }
@@ -46,7 +48,7 @@
   .footer {
     font-size: 14px;
     line-height: 1.2;
-    color: var(--cool-gray500);
+    color: $cool-gray500;
 
     display: flex;
     justify-content: space-between;
@@ -63,7 +65,7 @@
     }
 
     .created_at {
-      color: var(--cool-gray400);
+      color: $cool-gray400;
     }
   }
 }
@@ -72,7 +74,7 @@
   display: flex;
   gap: 8px;
   font-size: 16px;
-  color: var(--cool-gray500);
+  color: $cool-gray500;
 }
 
 .best {
