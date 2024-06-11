@@ -25,7 +25,7 @@ function ArticleSection() {
     <section className={styles.section}>
       <header className={styles.header}>
         <h2 className={styles.title}>게시글</h2>
-        <Link className={`button ${styles.button}`} href="/boards/create">
+        <Link className={styles.button} href="/boards/create">
           글쓰기
         </Link>
       </header>

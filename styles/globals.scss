@@ -25,31 +25,6 @@ a {
   text-decoration: none;
 }
 
-.button {
-  background-color: $point-blue;
-  color: $white;
-
-  &:hover {
-    background-color: $button-hover;
-  }
-  &:active {
-    background-color: $button-click;
-  }
-  &:disabled {
-    background-color: $cool-gray400;
-  }
-}
-
-a.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-button.button {
-  border: none;
-}
-
 li {
   list-style: none;
 }

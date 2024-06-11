@@ -1,4 +1,5 @@
 @import "@/styles/_color";
+@import "@/styles/button";
 
 .section {
   margin: 0 auto;
@@ -33,6 +34,7 @@
 
       font-size: 16px;
       font-weight: 600;
+      @include btn-a-default;
     }
   }
 

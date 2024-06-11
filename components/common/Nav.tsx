@@ -37,7 +37,7 @@ function Nav() {
           </li>
         </ul>
       </div>
-      <Link className={`button ${styles.login_button}`} href="/login">
+      <Link className={styles.login_button} href="/login">
         로그인
       </Link>
     </nav>
