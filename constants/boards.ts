@@ -1,5 +1,8 @@
 import Device from "./Device";
 
+export const IMAGE_DOMAIN_ALLOWED =
+  "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com";
+
 export const NUM_BEST_ARTICLES = {
   [Device.Mobile]: 1,
   [Device.Tablet]: 2,

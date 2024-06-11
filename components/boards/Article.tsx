@@ -2,13 +2,18 @@ import { Article } from "@/interfaces/Article.interface";
 import styles from "./Article.module.scss";
 import Image from "next/image";
 import formatDateWithDot from "@/utils/formatDateWithDot";
+import { IMAGE_DOMAIN_ALLOWED } from "@/constants/boards";
+
+const filterImageSrc = (image: string | null) => {
+  if (image?.startsWith(IMAGE_DOMAIN_ALLOWED)) {
+    return image;
+  } else {
+    return "";
+  }
+};
 
 export function NormalArticle({ article }: { article: Article }) {
-  const imageSrc = article.image?.startsWith(
-    "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com"
-  )
-    ? article.image
-    : "";
+  const imageSrc = filterImageSrc(article.image);
 
   return (
     <>
@@ -42,11 +47,7 @@ export function NormalArticle({ article }: { article: Article }) {
 }
 
 export function BestArticle({ article }: { article: Article }) {
-  const imageSrc = article.image?.startsWith(
-    "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com"
-  )
-    ? article.image
-    : "";
+  const imageSrc = filterImageSrc(article.image);
 
   return (
     <article className={`${styles.article} ${styles.best}`}>
