@@ -20,7 +20,7 @@ export function NormalArticle({ article }: { article: Article }) {
       <article className={styles.article}>
         <div className={styles.content}>
           <header className={styles.header}>
-            <h3>{article.title}</h3>
+            <h3 className={styles.title}>{article.title}</h3>
             {imageSrc && <ArticleImage imageSrc={imageSrc} />}
           </header>
 
@@ -61,7 +61,7 @@ export function BestArticle({ article }: { article: Article }) {
 
       <div className={styles.content}>
         <header className={styles.header}>
-          <h3>{article.title}</h3>
+          <h3 className={styles.title}>{article.title}</h3>
           {imageSrc && <ArticleImage imageSrc={imageSrc} />}
         </header>
 

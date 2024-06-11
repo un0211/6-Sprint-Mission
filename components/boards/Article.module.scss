@@ -7,10 +7,6 @@
 
     .content {
       padding: 16px 0;
-
-      @media (min-width: 1200px) {
-        gap: 18px;
-      }
     }
   }
 
@@ -28,10 +24,6 @@
     .title {
       font-size: 20px;
       line-height: 1.5;
-
-      @media (max-width: 1199px) {
-        font-size: 18px;
-      }
     }
 
     .image_container {
@@ -81,5 +73,23 @@
   .count_container {
     gap: 4px;
     font-size: 14px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .article.best {
+    .content {
+      gap: 18px;
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .article {
+    .header {
+      .title {
+        font-size: 18px;
+      }
+    }
   }
 }

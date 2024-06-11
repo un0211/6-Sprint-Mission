@@ -9,10 +9,6 @@
     font-size: 20px;
     line-height: 1.2;
     color: $cool-gray900;
-
-    @media (max-width: 767px) {
-      font-size: 18px;
-    }
   }
 
   .list {
@@ -20,14 +16,6 @@
 
     display: flex;
     gap: 24px;
-
-    @media (max-width: 1199px) {
-      gap: 16px;
-    }
-
-    @media (max-width: 767px) {
-      margin-top: 16px;
-    }
 
     li {
       flex-grow: 1;
@@ -42,4 +30,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 1199px) {
+  .section {
+    .list {
+      gap: 16px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    .title {
+      font-size: 18px;
+    }
+
+    .list {
+      margin-top: 16px;
+    }
+  }
 }

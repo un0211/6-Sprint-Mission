@@ -12,18 +12,10 @@
     align-items: center;
     margin-bottom: 24px;
 
-    @media (max-width: 767px) {
-      margin-bottom: 16px;
-    }
-
     .title {
       font-size: 20px;
       line-height: 1.2;
       color: $cool-gray900;
-
-      @media (max-width: 767px) {
-        font-size: 18px;
-      }
     }
 
     .button {
@@ -45,10 +37,6 @@
 
     display: flex;
     gap: 16px;
-
-    @media (max-width: 767px) {
-      gap: 8px;
-    }
   }
 
   .list {
@@ -72,4 +60,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 767px) {
+  .section {
+    .header {
+      margin-bottom: 16px;
+
+      .title {
+        font-size: 18px;
+      }
+    }
+
+    .toolbar {
+      gap: 8px;
+    }
+  }
 }
