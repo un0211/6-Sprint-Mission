@@ -1,13 +1,13 @@
 import styles from "./ArticleSection.module.scss";
 import Link from "next/link";
 import { useState } from "react";
-import { Order } from "@/constants/boards";
+import { ORDER, Order } from "@/constants/boards";
 import SearchBar from "../common/SearchBar";
 import Dropdown from "../common/Dropdown";
 import { NormalArticleList } from "./ArticleList";
 
 function ArticleSection() {
-  const [order, setOrder] = useState(Order.Recent);
+  const [order, setOrder] = useState<Order>(ORDER.RECENT);
   const [keyword, setKeyword] = useState("");
 
   const handleOrderChange = (newOrder: Order) => {

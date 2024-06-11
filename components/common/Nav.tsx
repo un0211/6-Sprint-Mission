@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "./Nav.module.scss";
 import { useDevice } from "@/lib/DeviceContext";
-import Device from "@/constants/Device";
+import { DEVICE } from "@/constants/Device";
 
 function Nav() {
   const device = useDevice();
@@ -12,7 +12,7 @@ function Nav() {
     <nav className={styles.nav}>
       <div className={styles.container}>
         <Link href="/">
-          {device === Device.Mobile ? (
+          {device === DEVICE.MOBILE ? (
             <Image
               alt="판다마켓 로고"
               src="/logo_text.png"

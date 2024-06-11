@@ -1,4 +1,4 @@
-import { ORDER_MESSAGE, Order } from "@/constants/boards";
+import { ORDER_MESSAGE, ORDER, Order } from "@/constants/boards";
 import styles from "./Dropdown.module.scss";
 import Image from "next/image";
 import { useState } from "react";
@@ -36,13 +36,13 @@ function Dropdown({
         <ul className={styles.menus}>
           <li
             className={styles.menu}
-            onClick={() => handleMenuClick(Order.Recent)}
+            onClick={() => handleMenuClick(ORDER.RECENT)}
           >
             최신순
           </li>
           <li
             className={styles.menu}
-            onClick={() => handleMenuClick(Order.Like)}
+            onClick={() => handleMenuClick(ORDER.LIKE)}
           >
             좋아요순
           </li>
