@@ -1,5 +1,5 @@
 import styles from "./AddForm.module.scss";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import ImageInput from "../common/ImageInput";
 
 export interface FormData {
@@ -13,6 +13,7 @@ function AddForm() {
     title: "",
     content: "",
   });
+  const [isFormFilled, setIsFormFilled] = useState(false);
 
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData((prevFormData) => ({
@@ -42,11 +43,21 @@ function AddForm() {
     });
   };
 
+  useEffect(() => {
+    const checkFormFilled = () =>
+      formData.title && formData.content ? true : false;
+    setIsFormFilled(checkFormFilled());
+  }, [formData.title, formData.content]);
+
   return (
     <form className={styles.form}>
       <header className={styles.header}>
         <h2 className={styles.title}>게시글 쓰기</h2>
-        <button className={styles.button} type="submit" disabled>
+        <button
+          className={styles.button}
+          type="submit"
+          disabled={!isFormFilled}
+        >
           등록
         </button>
       </header>
