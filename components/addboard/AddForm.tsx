@@ -15,17 +15,13 @@ function AddForm() {
   });
   const [isFormFilled, setIsFormFilled] = useState(false);
 
-  const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
-      title: e.target.value,
-    }));
-  };
-
-  const handleContentChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      content: e.target.value,
+      [id]: value,
     }));
   };
 
@@ -72,7 +68,7 @@ function AddForm() {
           placeholder="제목을 입력해주세요"
           type="text"
           autoComplete="off"
-          onChange={handleTitleChange}
+          onChange={handleInputChange}
         />
       </div>
 
@@ -84,7 +80,7 @@ function AddForm() {
           id="content"
           value={formData.content}
           placeholder="내용을 입력해주세요"
-          onChange={handleContentChange}
+          onChange={handleInputChange}
         />
       </div>
 
