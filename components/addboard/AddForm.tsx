@@ -2,10 +2,10 @@ import styles from "./AddForm.module.scss";
 import { ChangeEvent, useEffect, useState } from "react";
 import ImageInput from "../common/ImageInput";
 
-export interface FormData {
+interface FormData {
   title: string;
   content: string;
-  image?: string;
+  image?: File;
 }
 
 function AddForm() {
@@ -25,10 +25,10 @@ function AddForm() {
     }));
   };
 
-  const handleImageChange = (file: File) => {
+  const handleImageChange = (image: File) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      file,
+      image,
     }));
   };
 
