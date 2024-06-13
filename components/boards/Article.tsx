@@ -27,7 +27,7 @@ export function NormalArticle({ article }: { article: Article }) {
           <footer className={styles.footer}>
             <div className={styles.info_container}>
               <Image
-                src="/boards/profile.svg"
+                src="/icons/profile.svg"
                 alt="프로필 이미지"
                 width={24}
                 height={24}
@@ -53,7 +53,7 @@ export function BestArticle({ article }: { article: Article }) {
     <article className={`${styles.article} ${styles.best}`}>
       <Image
         className={styles.badge}
-        src="/boards/badge.png"
+        src="/images/badge.png"
         alt="베스트 상품 뱃지"
         width="102"
         height="30"
@@ -96,7 +96,7 @@ function ArticleImage({ imageSrc }: { imageSrc: string }) {
 function LikeCount({ count, size }: { count: number; size: number }) {
   return (
     <div className={styles.count_container}>
-      <Image src="/boards/heart.svg" alt="좋아요" width={size} height={size} />
+      <Image src="/icons/heart.svg" alt="좋아요" width={size} height={size} />
       <p>{count}</p>
     </div>
   );

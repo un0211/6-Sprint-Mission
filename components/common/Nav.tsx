@@ -15,14 +15,14 @@ function Nav() {
           {device === DEVICE.MOBILE ? (
             <Image
               alt="판다마켓 로고"
-              src="/logo_text.png"
+              src="/images/logo_text.png"
               width="81"
               height="40"
             />
           ) : (
             <Image
               alt="판다마켓 로고"
-              src={"/logo.png"}
+              src={"/images/logo.png"}
               width="153"
               height="51"
             />

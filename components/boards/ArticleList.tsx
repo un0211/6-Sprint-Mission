@@ -1,7 +1,7 @@
 import { NUM_BEST_ARTICLES, Order } from "@/constants/boards";
 import useFetchData from "@/hooks/useFetchData";
 import { Articles } from "@/interfaces/Article.interface";
-import Spinner from "../common/Spinner";
+import Spinner from "@/components/common/Spinner";
 import styles from "./ArticleList.module.scss";
 import Link from "next/link";
 import { BestArticle, NormalArticle } from "./Article";

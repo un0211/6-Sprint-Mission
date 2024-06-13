@@ -26,7 +26,7 @@ function Dropdown({
       <button className={styles.button} onClick={handleDropdownClick}>
         <span>{ORDER_MESSAGE[order]}</span>
         <Image
-          src="/boards/arrow_down.svg"
+          src="/icons/arrow_down.svg"
           alt="드롭다운"
           width={24}
           height={24}

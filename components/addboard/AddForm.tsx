@@ -1,6 +1,6 @@
 import styles from "./AddForm.module.scss";
 import { ChangeEvent, useEffect, useState } from "react";
-import ImageInput from "../common/ImageInput";
+import ImageInput from "@/components/common/ImageInput";
 
 interface FormData {
   title: string;
