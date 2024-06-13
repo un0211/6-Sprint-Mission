@@ -8,13 +8,8 @@ function Login() {
   return (
     <>
       <header className={styles.header}>
-        <Link href="/">
-          <Image
-            alt="판다마켓 홈"
-            src="/images/logo.png"
-            width={396}
-            height={132}
-          />
+        <Link href="/" className={styles.logo}>
+          <Image alt="판다마켓 홈" src="/images/logo.png" fill />
         </Link>
       </header>
 

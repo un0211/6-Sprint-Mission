@@ -46,10 +46,12 @@
 
   input {
     @include input-default;
+    margin-top: 12px;
   }
 
   textarea {
     @include input-default;
+    margin-top: 12px;
     height: 282px;
     resize: none;
   }
