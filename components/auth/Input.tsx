@@ -163,6 +163,7 @@ export function LoginPasswordInput({
           />
         </button>
       </div>
+      {error && <p className={styles.warning}>{error}</p>}
     </div>
   );
 }

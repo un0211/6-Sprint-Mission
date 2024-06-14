@@ -13,7 +13,7 @@ function SignupForm() {
     setError,
     clearErrors,
   } = useForm<SignupData>({
-    mode: "onChange",
+    mode: "onBlur",
     defaultValues: {
       email: "",
       nickname: "",
@@ -81,8 +81,8 @@ function SignupForm() {
         error={errors?.passwordCheck?.message}
         register={register}
       />
-      <button className={styles.button} type="button" disabled={!hasAllInput}>
-        로그인
+      <button className={styles.button} type="submit" disabled={!hasAllInput}>
+        회원가입
       </button>
     </form>
   );

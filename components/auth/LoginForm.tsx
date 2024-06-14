@@ -44,7 +44,7 @@ function LoginForm() {
         error={errors?.password?.message}
         register={register}
       />
-      <button className={styles.button} type="button" disabled={!hasAllInput}>
+      <button className={styles.button} type="submit" disabled={!hasAllInput}>
         로그인
       </button>
     </form>
