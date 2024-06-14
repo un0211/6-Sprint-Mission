@@ -8,6 +8,7 @@ import {
   SignupData,
   SignupDataKey,
 } from "@/interfaces/Auth.interface";
+import { useState } from "react";
 
 export function SignupTextInput({
   id,
@@ -82,6 +83,12 @@ export function SignupPasswordInput({
   error?: string;
   register: UseFormRegister<SignupData>;
 }) {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleInvisibleClick = () => {
+    setIsVisible((prevIsVisible) => !prevIsVisible);
+  };
+
   return (
     <div>
       <label className={styles.label} htmlFor={id}>
@@ -91,18 +98,23 @@ export function SignupPasswordInput({
         <input
           {...register(id, INPUT_RULES[id])}
           className={styles.input}
-          type="password"
+          type={isVisible ? "text" : "password"}
           id={id}
           placeholder={PLACEHOLDER[id]}
           autoComplete="current-password"
         />
-        <Image
+        <button
+          type="button"
           className={styles.on_off}
-          alt="비밀번호 보기"
-          src="/icons/invisible.svg"
-          width={24}
-          height={24}
-        />
+          onClick={handleInvisibleClick}
+        >
+          <Image
+            alt="비밀번호 보기"
+            src={isVisible ? "/icons/visible.svg" : "/icons/invisible.svg"}
+            width={24}
+            height={24}
+          />
+        </button>
       </div>
       {error && <p className={styles.warning}>{error}</p>}
     </div>
@@ -118,6 +130,12 @@ export function LoginPasswordInput({
   error?: string;
   register: UseFormRegister<LoginData>;
 }) {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleInvisibleClick = () => {
+    setIsVisible((prevIsVisible) => !prevIsVisible);
+  };
+
   return (
     <div>
       <label className={styles.label} htmlFor={id}>
@@ -127,20 +145,24 @@ export function LoginPasswordInput({
         <input
           {...register(id, INPUT_RULES[id])}
           className={styles.input}
-          type="password"
+          type={isVisible ? "text" : "password"}
           id={id}
           placeholder={PLACEHOLDER[id]}
           autoComplete="current-password"
         />
-        <Image
+        <button
+          type="button"
           className={styles.on_off}
-          alt="비밀번호 보기"
-          src="/icons/invisible.svg"
-          width={24}
-          height={24}
-        />
+          onClick={handleInvisibleClick}
+        >
+          <Image
+            alt="비밀번호 보기"
+            src={isVisible ? "/icons/visible.svg" : "/icons/invisible.svg"}
+            width={24}
+            height={24}
+          />
+        </button>
       </div>
-      {error && <p className={styles.warning}>{error}</p>}
     </div>
   );
 }
