@@ -1,24 +1,50 @@
+import { useEffect, useState } from "react";
 import styles from "./AuthForm.module.scss";
-import { Input, PasswordInput } from "./Input";
+import { LoginPasswordInput, LoginTextInput } from "./Input";
+import { useForm } from "react-hook-form";
+
+interface LoginData {
+  email: string;
+  password: string;
+}
 
 function LoginForm() {
+  const [hasAllInput, setHasAllInput] = useState(false);
+  const {
+    register,
+    formState: { errors, dirtyFields },
+  } = useForm<LoginData>({
+    mode: "onBlur",
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  useEffect(() => {
+    const noError = Object.keys(errors).length === 0;
+    const allFilled = Object.keys(dirtyFields).length === 2;
+    setHasAllInput(noError && allFilled);
+  }, [
+    errors,
+    dirtyFields,
+    Object.keys(errors).length === 0,
+    Object.keys(dirtyFields).length === 2,
+  ]);
+
   return (
     <form className={styles.form}>
-      <Input
-        label="이메일"
+      <LoginTextInput
         id="email"
-        type="email"
-        autoComplete="email"
-        placeholder="이메일을 입력해주세요"
+        error={errors?.email?.message}
+        register={register}
       />
-
-      <PasswordInput
-        label="비밀번호"
+      <LoginPasswordInput
         id="password"
-        placeholder="비밀번호를 입력해주세요"
+        error={errors?.password?.message}
+        register={register}
       />
-
-      <button className={styles.button} type="button" disabled>
+      <button className={styles.button} type="button" disabled={!hasAllInput}>
         로그인
       </button>
     </form>
