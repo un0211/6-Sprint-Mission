@@ -1,7 +1,11 @@
 import styles from "./AddForm.module.scss";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEventHandler, useEffect, useState } from "react";
 import ImageInput from "@/components/common/ImageInput";
 import { useRouter } from "next/router";
+import axios from "@/lib/axiosWithToken";
+import { AxiosError, AxiosResponse } from "axios";
+import { Article, ArticleData } from "@/interfaces/Article.interface";
+import { uploadImage } from "@/utils/uploadImage";
 
 interface FormData {
   title: string;
@@ -17,6 +21,7 @@ function AddForm() {
     content: "",
   });
   const [isFormFilled, setIsFormFilled] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -42,6 +47,40 @@ function AddForm() {
     });
   };
 
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+    const formArticleData = async () => {
+      if (!formData.image) {
+        return formData as ArticleData;
+      }
+
+      const image = await uploadImage(formData.image);
+      return { ...formData, image };
+    };
+
+    const postData = async () => {
+      try {
+        const articleData = await formArticleData();
+        const res: AxiosResponse<Article> = await axios.post(
+          "/articles",
+          articleData
+        );
+        const { id } = res.data;
+        router.replace(`/boards/${id}`);
+      } catch (e) {
+        if (e instanceof AxiosError) {
+          const message = e.response?.data.hasOwnProperty("message")
+            ? e.response?.data.message
+            : e.message;
+          setErrorMessage(message);
+          console.log(e.response);
+        }
+      }
+    };
+
+    e.preventDefault();
+    postData();
+  };
+
   useEffect(() => {
     // NOTE - 기존에 로그인 되어있는지 확인
     if (!localStorage.getItem("accessToken")) {
@@ -57,7 +96,7 @@ function AddForm() {
   }, [formData.title, formData.content]);
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <header className={styles.header}>
         <h2 className={styles.title}>게시글 쓰기</h2>
         <button
@@ -105,6 +144,7 @@ function AddForm() {
           onDeleteClick={handleImageDelete}
         />
       </div>
+      {errorMessage && <p className={styles.warning}>{errorMessage}</p>}
     </form>
   );
 }

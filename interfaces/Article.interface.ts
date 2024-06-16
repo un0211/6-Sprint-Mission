@@ -16,3 +16,9 @@ export interface Articles {
   list: Article[];
   totalCount: number;
 }
+
+export interface ArticleData {
+  title: string;
+  content: string;
+  image?: string;
+}
