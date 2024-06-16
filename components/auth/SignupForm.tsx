@@ -1,10 +1,15 @@
 import { SignupData } from "@/interfaces/Auth.interface";
 import styles from "./AuthForm.module.scss";
-import { useForm } from "react-hook-form";
+import { AxiosError } from "axios";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { SignupPasswordInput, SignupTextInput } from "./Input";
+import axios from "@/lib/axios";
+import { useRouter } from "next/router";
 
 function SignupForm() {
+  const router = useRouter();
+
   const [hasAllInput, setHasAllInput] = useState(false);
   const {
     register,
@@ -12,33 +17,60 @@ function SignupForm() {
     watch,
     setError,
     clearErrors,
+    handleSubmit,
   } = useForm<SignupData>({
     mode: "onBlur",
     defaultValues: {
       email: "",
       nickname: "",
       password: "",
-      passwordCheck: "",
+      passwordConfirmation: "",
     },
   });
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const onSubmit: SubmitHandler<SignupData> = (formData, event) => {
+    const postData = async () => {
+      try {
+        await axios.post("/auth/signUp", formData);
+        router.replace("/login");
+      } catch (e) {
+        if (e instanceof AxiosError) {
+          const message = e.response?.data.hasOwnProperty("message")
+            ? e.response?.data.message
+            : e.message;
+          setErrorMessage(message);
+        }
+      }
+    };
+
+    event?.preventDefault();
+    postData();
+  };
 
   useEffect(() => {
     const checkPasswordMatch = () => {
       if (
-        watch("passwordCheck") &&
-        watch("password") !== watch("passwordCheck")
+        watch("passwordConfirmation") &&
+        watch("password") !== watch("passwordConfirmation")
       ) {
-        setError("passwordCheck", {
+        setError("passwordConfirmation", {
           type: "password-mismatch",
           message: "비밀번호가 일치하지 않습니다.",
         });
       } else {
-        clearErrors("passwordCheck");
+        clearErrors("passwordConfirmation");
       }
     };
     checkPasswordMatch();
     // Q3. 아래 식처럼 계산이 있으면 useEffect 성능에 안좋을까요? 개선 방법 있을까요?
-  }, [watch("password"), watch("passwordCheck"), clearErrors, setError, watch]);
+  }, [
+    watch("password"),
+    watch("passwordConfirmation"),
+    clearErrors,
+    setError,
+    watch,
+  ]);
 
   useEffect(() => {
     /* Q1.
@@ -60,7 +92,7 @@ function SignupForm() {
   ]);
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <SignupTextInput
         id="email"
         error={errors?.email?.message}
@@ -77,13 +109,14 @@ function SignupForm() {
         register={register}
       />
       <SignupPasswordInput
-        id="passwordCheck"
-        error={errors?.passwordCheck?.message}
+        id="passwordConfirmation"
+        error={errors?.passwordConfirmation?.message}
         register={register}
       />
       <button className={styles.button} type="submit" disabled={!hasAllInput}>
         회원가입
       </button>
+      {errorMessage && <p className={styles.warning}>{errorMessage}</p>}
     </form>
   );
 }
