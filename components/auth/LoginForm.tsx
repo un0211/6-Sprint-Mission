@@ -56,10 +56,7 @@ function LoginForm() {
 
   useEffect(() => {
     // NOTE - 기존에 로그인 되어있는지 확인
-    if (
-      localStorage.getItem("accessToken") ||
-      localStorage.getItem("refreshToken")
-    ) {
+    if (localStorage.getItem("accessToken")) {
       router.replace("/");
     }
   }, [router]);

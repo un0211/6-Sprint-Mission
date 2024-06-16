@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import styles from "./Nav.module.scss";
 import { useDevice } from "@/lib/DeviceContext";
 import { DEVICE } from "@/constants/Device";
+import { useEffect, useState } from "react";
 
 function Nav() {
   const device = useDevice();
@@ -37,9 +38,7 @@ function Nav() {
           </li>
         </ul>
       </div>
-      <Link className={styles.login_button} href="/login">
-        로그인
-      </Link>
+      <Auth />
     </nav>
   );
 }
@@ -53,6 +52,31 @@ function Menu({ path, menu }: { path: string; menu: string }) {
     <Link href={path} className={className}>
       {menu}
     </Link>
+  );
+}
+
+function Auth() {
+  const [isAuthentic, setIsAuthentic] = useState(false);
+
+  useEffect(() => {
+    setIsAuthentic(Boolean(localStorage.getItem("accessToken")));
+  }, []);
+
+  return (
+    <>
+      {isAuthentic ? (
+        <Image
+          alt="프로필 이미지"
+          src="/icons/profile.svg"
+          width={40}
+          height={40}
+        />
+      ) : (
+        <Link className={styles.login_button} href="/login">
+          로그인
+        </Link>
+      )}
+    </>
   );
 }
 
