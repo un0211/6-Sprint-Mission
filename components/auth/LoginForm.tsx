@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import styles from "./AuthForm.module.scss";
 import { LoginPasswordInput, LoginTextInput } from "./Input";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { AxiosError, AxiosResponse } from "axios";
+import { AuthResponseBody } from "@/interfaces/Auth.interface";
+import axios from "@/lib/axios";
+import { useRouter } from "next/router";
 
 interface LoginData {
   email: string;
@@ -9,10 +13,13 @@ interface LoginData {
 }
 
 function LoginForm() {
+  const router = useRouter();
+
   const [hasAllInput, setHasAllInput] = useState(false);
   const {
     register,
     formState: { errors, dirtyFields },
+    handleSubmit,
   } = useForm<LoginData>({
     mode: "onBlur",
     defaultValues: {
@@ -20,6 +27,41 @@ function LoginForm() {
       password: "",
     },
   });
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const onSubmit: SubmitHandler<LoginData> = (formData, event) => {
+    const postData = async () => {
+      try {
+        const res: AxiosResponse<AuthResponseBody> = await axios.post(
+          "/auth/signIn",
+          formData
+        );
+        const { accessToken, refreshToken } = res.data;
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
+        router.replace("/");
+      } catch (e) {
+        if (e instanceof AxiosError) {
+          const message = e.response?.data.hasOwnProperty("message")
+            ? e.response?.data.message
+            : e.message;
+          setErrorMessage(message);
+        }
+      }
+    };
+
+    event?.preventDefault();
+    postData();
+  };
+
+  useEffect(() => {
+    if (
+      localStorage.getItem("accessToken") ||
+      localStorage.getItem("refreshToken")
+    ) {
+      router.replace("/");
+    }
+  }, [router]);
 
   useEffect(() => {
     const noError = Object.keys(errors).length === 0;
@@ -33,7 +75,7 @@ function LoginForm() {
   ]);
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <LoginTextInput
         id="email"
         error={errors?.email?.message}
@@ -47,6 +89,7 @@ function LoginForm() {
       <button className={styles.button} type="submit" disabled={!hasAllInput}>
         로그인
       </button>
+      {errorMessage && <p className={styles.warning}>{errorMessage}</p>}
     </form>
   );
 }

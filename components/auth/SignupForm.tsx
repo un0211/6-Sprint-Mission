@@ -49,6 +49,15 @@ function SignupForm() {
   };
 
   useEffect(() => {
+    if (
+      localStorage.getItem("accessToken") ||
+      localStorage.getItem("refreshToken")
+    ) {
+      router.replace("/");
+    }
+  }, [router]);
+
+  useEffect(() => {
     const checkPasswordMatch = () => {
       if (
         watch("passwordConfirmation") &&
