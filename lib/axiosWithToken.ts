@@ -14,7 +14,6 @@ instance.interceptors.request.use((config) => {
     return config;
   }
 
-  config.headers["Content-Type"] = "application/json";
   config.headers["Authorization"] = `Bearer ${accessToken}`;
 
   return config;
@@ -31,7 +30,7 @@ instance.interceptors.response.use(
     ) {
       const refreshToken = localStorage.getItem("refreshToken");
       if (refreshToken) {
-        await tokenRefresh(instance, refreshToken);
+        await tokenRefresh(refreshToken);
       }
       originalRequest.headers._retry = true;
       return instance(originalRequest);

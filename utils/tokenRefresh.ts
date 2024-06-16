@@ -1,10 +1,7 @@
-import { AxiosInstance } from "axios";
+import axios from "@/lib/axiosWithToken";
 
-export const tokenRefresh = async (
-  instance: AxiosInstance,
-  refreshToken: string
-) => {
-  const { data } = await instance.post("/auth/refresh-token", {
+export const tokenRefresh = async (refreshToken: string) => {
+  const { data } = await axios.post("/auth/refresh-token", {
     refreshToken,
   });
 
