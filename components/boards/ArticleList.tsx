@@ -5,7 +5,7 @@ import Spinner from "@/components/common/Spinner";
 import styles from "./ArticleList.module.scss";
 import Link from "next/link";
 import { BestArticle, NormalArticle } from "./Article";
-import { useDevice } from "@/lib/DeviceContext";
+import { useDevice } from "@/contexts/DeviceContext";
 
 function ArticleList({
   articles,

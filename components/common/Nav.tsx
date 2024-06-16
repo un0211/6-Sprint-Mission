@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "./Nav.module.scss";
-import { useDevice } from "@/lib/DeviceContext";
+import { useDevice } from "@/contexts/DeviceContext";
 import { DEVICE } from "@/constants/Device";
 import { useEffect, useState } from "react";
 

@@ -2,7 +2,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import "@/styles/globals.scss";
 import Nav from "@/components/common/Nav";
-import { DeviceProvider } from "@/lib/DeviceContext";
+import { DeviceProvider } from "@/contexts/DeviceContext";
 import { usePathname } from "next/navigation";
 
 const PAGES_WITHOUT_NAV = ["/login", "/signup"];
