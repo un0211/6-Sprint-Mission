@@ -71,7 +71,7 @@ export function NormalArticleList({
 
 export function BestArticleList() {
   const device = useDevice();
-  const query = `?pageSize=${NUM_BEST_ARTICLES[device]}`;
+  const query = `?pageSize=${NUM_BEST_ARTICLES[device]}&orderBy=like`;
   const fetchedData = useFetchData<Articles>(`/articles${query}`);
   const { data: articles, isLoading, loadingError } = fetchedData;
 
