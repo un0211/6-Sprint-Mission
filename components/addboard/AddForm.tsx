@@ -1,6 +1,7 @@
 import styles from "./AddForm.module.scss";
 import { ChangeEvent, useEffect, useState } from "react";
 import ImageInput from "@/components/common/ImageInput";
+import { useRouter } from "next/router";
 
 interface FormData {
   title: string;
@@ -9,6 +10,8 @@ interface FormData {
 }
 
 function AddForm() {
+  const router = useRouter();
+
   const [formData, setFormData] = useState<FormData>({
     title: "",
     content: "",
@@ -38,6 +41,14 @@ function AddForm() {
       return prevFormData;
     });
   };
+
+  useEffect(() => {
+    // NOTE - 기존에 로그인 되어있는지 확인
+    if (!localStorage.getItem("accessToken")) {
+      alert("로그인이 필요한 기능입니다!");
+      router.replace("/login");
+    }
+  }, [router]);
 
   useEffect(() => {
     const checkFormFilled = () =>
