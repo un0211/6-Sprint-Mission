@@ -55,6 +55,7 @@ function LoginForm() {
   };
 
   useEffect(() => {
+    // NOTE - 기존에 로그인 되어있는지 확인
     if (
       localStorage.getItem("accessToken") ||
       localStorage.getItem("refreshToken")
@@ -64,6 +65,7 @@ function LoginForm() {
   }, [router]);
 
   useEffect(() => {
+    // NOTE - 값 유효성 검사에 따라 버튼 활성화 여부 결정
     const noError = Object.keys(errors).length === 0;
     const allFilled = Object.keys(dirtyFields).length === 2;
     setHasAllInput(noError && allFilled);

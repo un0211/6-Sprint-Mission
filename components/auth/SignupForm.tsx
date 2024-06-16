@@ -49,6 +49,7 @@ function SignupForm() {
   };
 
   useEffect(() => {
+    // NOTE - 기존에 로그인 되어있는지 확인
     if (
       localStorage.getItem("accessToken") ||
       localStorage.getItem("refreshToken")
@@ -58,6 +59,7 @@ function SignupForm() {
   }, [router]);
 
   useEffect(() => {
+    // NOTE - 비밀번호나 비밀번호 확인이 바뀔때마다 일치여부 확인
     const checkPasswordMatch = () => {
       if (
         watch("passwordConfirmation") &&
@@ -90,6 +92,7 @@ function SignupForm() {
      * 아직 입력한 값이 조건을 만족하지 않았는데도 버튼이 일시적으로 활동화되는 문제가 있습니다.
      * 어떻게 개선하면 좋을까요?
      */
+    // NOTE - 값 유효성 검사에 따라 버튼 활성화 여부 결정
     const noError = Object.keys(errors).length === 0;
     const allFilled = Object.keys(dirtyFields).length === 4;
     setHasAllInput(noError && allFilled);
