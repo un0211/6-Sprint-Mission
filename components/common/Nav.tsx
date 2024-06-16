@@ -7,28 +7,10 @@ import { DEVICE } from "@/constants/Device";
 import { useEffect, useState } from "react";
 
 function Nav() {
-  const device = useDevice();
-
   return (
     <nav className={styles.nav}>
       <div className={styles.container}>
-        <Link href="/">
-          {device === DEVICE.MOBILE ? (
-            <Image
-              alt="판다마켓 로고"
-              src="/images/logo_text.png"
-              width="81"
-              height="40"
-            />
-          ) : (
-            <Image
-              alt="판다마켓 로고"
-              src={"/images/logo.png"}
-              width="153"
-              height="51"
-            />
-          )}
-        </Link>
+        <Logo />
         <ul className={styles.menu}>
           <li>
             <Menu path="/boards" menu="자유게시판" />
@@ -40,6 +22,30 @@ function Nav() {
       </div>
       <Auth />
     </nav>
+  );
+}
+
+function Logo() {
+  const device = useDevice();
+
+  return (
+    <Link href="/">
+      {device === DEVICE.MOBILE ? (
+        <Image
+          alt="판다마켓 로고"
+          src="/images/logo_text.png"
+          width="81"
+          height="40"
+        />
+      ) : (
+        <Image
+          alt="판다마켓 로고"
+          src={"/images/logo.png"}
+          width="153"
+          height="51"
+        />
+      )}
+    </Link>
   );
 }
 
