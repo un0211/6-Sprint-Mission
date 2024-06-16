@@ -33,6 +33,7 @@ function SignupForm() {
     const postData = async () => {
       try {
         await axios.post("/auth/signUp", formData);
+        setErrorMessage("");
         router.replace("/login");
       } catch (e) {
         if (e instanceof AxiosError) {

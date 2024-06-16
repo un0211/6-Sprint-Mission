@@ -13,6 +13,7 @@ function useFetchData<T>(url: string) {
         setIsLoading(true);
         const res: AxiosResponse<T> = await axios.get(url);
         setData(res.data);
+        setError(null);
       } catch (e) {
         if (e instanceof Error) {
           setError(e);

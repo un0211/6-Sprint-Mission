@@ -65,6 +65,7 @@ function AddForm() {
           articleData
         );
         const { id } = res.data;
+        setErrorMessage("");
         router.replace(`/boards/${id}`);
       } catch (e) {
         if (e instanceof AxiosError) {

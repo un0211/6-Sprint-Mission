@@ -39,6 +39,7 @@ function LoginForm() {
         const { accessToken, refreshToken } = res.data;
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("refreshToken", refreshToken);
+        setErrorMessage("");
         router.replace("/");
       } catch (e) {
         if (e instanceof AxiosError) {
