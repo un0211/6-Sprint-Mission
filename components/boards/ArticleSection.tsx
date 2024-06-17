@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ORDER, Order } from "@/constants/boards";
 import SearchBar from "@/components/common/SearchBar";
 import Dropdown from "@/components/common/Dropdown";
-import { NormalArticleList } from "./ArticleList";
+import NormalArticleList from "@/components/boards/ArticleList/NormalArticleList";
 
 function ArticleSection() {
   const [order, setOrder] = useState<Order>(ORDER.RECENT);

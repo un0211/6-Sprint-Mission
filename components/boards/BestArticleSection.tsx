@@ -1,5 +1,5 @@
 import styles from "./BestArticleSection.module.scss";
-import { BestArticleList } from "./ArticleList";
+import BestArticleList from "@/components/boards/ArticleList/BestArticleList";
 
 function BestArticleSection() {
   return (

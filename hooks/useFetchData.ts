@@ -4,7 +4,7 @@ import axios from "@/lib/axios";
 
 function useFetchData<T>(url: string) {
   const [data, setData] = useState<T>();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [loadingError, setError] = useState<null | Error>(null);
 
   useEffect(() => {

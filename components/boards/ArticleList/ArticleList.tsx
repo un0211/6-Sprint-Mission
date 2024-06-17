@@ -1,11 +1,8 @@
-import { NUM_BEST_ARTICLES, Order } from "@/constants/boards";
-import useFetchData from "@/hooks/useFetchData";
 import { Articles } from "@/interfaces/Article.interface";
 import Spinner from "@/components/common/Spinner";
 import styles from "./ArticleList.module.scss";
 import Link from "next/link";
-import { BestArticle, NormalArticle } from "./Article";
-import { useDevice } from "@/contexts/DeviceContext";
+import { BestArticle, NormalArticle } from "../Article";
 
 function ArticleList({
   articles,
@@ -19,6 +16,7 @@ function ArticleList({
   isBest?: boolean;
 }) {
   const className = isBest ? styles.best : styles.normal;
+  console.log(isLoading);
 
   if (isLoading) {
     return (
@@ -49,38 +47,4 @@ function ArticleList({
   );
 }
 
-export function NormalArticleList({
-  order,
-  keyword,
-}: {
-  order: Order;
-  keyword: string;
-}) {
-  const query = `?orderBy=${order}&keyword=${keyword}`;
-  const fetchedData = useFetchData<Articles>(`/articles${query}`);
-  const { data: articles, isLoading, loadingError } = fetchedData;
-
-  return (
-    <ArticleList
-      articles={articles}
-      isLoading={isLoading}
-      loadingError={loadingError}
-    />
-  );
-}
-
-export function BestArticleList() {
-  const device = useDevice();
-  const query = `?pageSize=${NUM_BEST_ARTICLES[device]}&orderBy=like`;
-  const fetchedData = useFetchData<Articles>(`/articles${query}`);
-  const { data: articles, isLoading, loadingError } = fetchedData;
-
-  return (
-    <ArticleList
-      articles={articles}
-      isLoading={isLoading}
-      loadingError={loadingError}
-      isBest={true}
-    />
-  );
-}
+export default ArticleList;
