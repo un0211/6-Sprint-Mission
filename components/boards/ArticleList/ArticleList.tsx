@@ -2,7 +2,8 @@ import { Articles } from "@/interfaces/Article.interface";
 import Spinner from "@/components/common/Spinner";
 import styles from "./ArticleList.module.scss";
 import Link from "next/link";
-import { BestArticle, NormalArticle } from "../Article";
+import { BestArticle } from "../Article/BestArticle";
+import { NormalArticle } from "../Article/NormalArticle";
 
 function ArticleList({
   articles,

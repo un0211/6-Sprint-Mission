@@ -25,16 +25,6 @@
       font-size: 20px;
       line-height: 1.5;
     }
-
-    .image_container {
-      width: 72px;
-      height: 72px;
-      border-radius: 6px;
-      background-color: $white;
-      border: 1px solid $cool-gray200;
-
-      padding: 12px;
-    }
   }
 
   .footer {
@@ -59,20 +49,6 @@
     .created_at {
       color: $cool-gray400;
     }
-  }
-}
-
-.count_container {
-  display: flex;
-  gap: 8px;
-  font-size: 16px;
-  color: $cool-gray500;
-}
-
-.best {
-  .count_container {
-    gap: 4px;
-    font-size: 14px;
   }
 }
 
